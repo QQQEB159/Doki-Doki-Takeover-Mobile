@@ -52,6 +52,10 @@ class Init extends MusicBeatState
 		// Start random seed based off current time.
 		Random.resetSeed();
 
+		#if FEATURE_MP4
+		video.FunkinVideoSprite.init();
+		#end
+		
 		#if FEATURE_DISCORD
 		DiscordClient.initialize();
 

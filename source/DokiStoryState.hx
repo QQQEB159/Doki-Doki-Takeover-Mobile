@@ -374,11 +374,10 @@ class DokiStoryState extends MusicBeatState
                         video.setGraphicSize(1280);
 	                });
 					video.load(Paths.video('sayointro'));
-					FlxG.addChildBelowMouse(video);
+					add(video);
 					video.play();
 					video.onEnd(function()
 					{
-						FlxG.removeChild(video);
 						video.destroy();
 						FlxG.camera.fade(FlxColor.BLACK, 0, false);
 						LoadingState.loadAndSwitchState(new PlayState(), true, true);

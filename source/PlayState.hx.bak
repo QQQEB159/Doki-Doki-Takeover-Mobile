@@ -2725,15 +2725,15 @@ class PlayState extends MusicBeatState
 					video.canSkip = SaveData.beatLibitina;
 					video.skipKeys = [FlxKey.ESCAPE, FlxKey.ENTER];
 					video.onFormat(() -> {
-                        video.camera = camVideo;
                         video.screenCenter();
                         video.setGraphicSize(1280);
 	                });
 					video.load(Paths.video('metaintro'));
-					add(video);
+					FlxG.addChildBelowMouse(video);
 					video.play();
 					video.onEnd(function()
 					{
+						FlxG.removeChild(video);
 						video.destroy();
 						startCountdown();
 					});
@@ -3055,15 +3055,15 @@ class PlayState extends MusicBeatState
 					video.canSkip = SaveData.beatPrologue;
 					video.skipKeys = [FlxKey.ESCAPE, FlxKey.ENTER];
 					video.onFormat(() -> {
-                        video.camera = camVideo;
                         video.screenCenter();
                         video.setGraphicSize(1280);
 	                });
 					video.load(Paths.video('monika'));
-					add(video);
+					FlxG.addChildBelowMouse(video);
 					video.play();
 					video.onEnd(function()
 					{
+						FlxG.removeChild(video);
 						video.destroy();
 						endSong();
 					});
@@ -3112,15 +3112,15 @@ class PlayState extends MusicBeatState
 				#if FEATURE_MP4
 				var video:VideoHandler = new VideoHandler();
 				video.onFormat(() -> {
-                    video.camera = camVideo;
                     video.screenCenter();
                     video.setGraphicSize(1280);
 	            });
 		        video.load(Paths.video('monikacodin'));
-				add(video);
+				FlxG.addChildBelowMouse(video);
 				video.play();
 				video.onEnd(function()
 				{
+					FlxG.removeChild(video);
 					video.destroy();
 				});
 				#end
@@ -3130,15 +3130,15 @@ class PlayState extends MusicBeatState
 				#if FEATURE_MP4
 				var video:VideoHandler = new VideoHandler();
 				video.onFormat(() -> {
-                    video.camera = camVideo;
                     video.screenCenter();
                     video.setGraphicSize(1280);
 	            });
 		        video.load(Paths.video('senpaicodin'));
-				add(video);
+				FlxG.addChildBelowMouse(video);
 				video.play();
 				video.onEnd(function()
 				{
+					FlxG.removeChild(video);
 					video.destroy();
 				});
 				#end
@@ -3148,15 +3148,15 @@ class PlayState extends MusicBeatState
 				#if FEATURE_MP4
 				var video:VideoHandler = new VideoHandler();
 				video.onFormat(() -> {
-                    video.camera = camVideo;
                     video.screenCenter();
                     video.setGraphicSize(1280);
 	            });
 		        video.load(Paths.video('youregoingtophilly'));
-				add(video);
+				FlxG.addChildBelowMouse(video);
 				video.play();
 				video.onEnd(function()
 				{
+					FlxG.removeChild(video);
 					video.destroy();
 				});
 				#end
