@@ -2,6 +2,8 @@ package video;
 
 // sigh rework coming again soon
 #if FEATURE_MP4
+import flixel.FlxG;
+import flixel.util.FlxTimer;
 import hxvlc.flixel.FlxVideoSprite;
 import hxvlc.util.Location;
 
