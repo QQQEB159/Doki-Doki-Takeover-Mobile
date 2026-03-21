@@ -1488,10 +1488,11 @@ class PlayState extends MusicBeatState
 						clubroom.loadGraphic(Paths.image('musicroom/Music_RoomLNF', 'doki'));
 						// picohandoatlas
 						var poemSprite:String = (SONG.song.toLowerCase().endsWith('-alt') ? 'notepad/picohandoatlas' : 'notepad/handoatlas');
+						var poemSpriteAnim:String = (SONG.song.toLowerCase().endsWith('-alt') ? 'lnf video Pico' : 'lnf video');
 						poemVideo = new FlxAnimate();
 						Paths.loadAnimateAtlas(poemVideo, poemSprite);
 						//poemVideo.showPivot = false;
-						poemVideo.anim.addBySymbol('hando', 'lnf video');
+						poemVideo.anim.addBySymbol('hando', poemSpriteAnim);
 						poemVideo.anim.play('hando');
 						poemVideo.scrollFactor.set();
 						poemVideo.setGraphicSize(Std.int(poemVideo.width / defaultCamZoom));
@@ -2736,7 +2737,7 @@ class PlayState extends MusicBeatState
 					video.onEnd(function()
 					{
 						startCountdown();
-						video.destroy();
+						//video.destroy();
 					});
 					#else
 					startCountdown();
@@ -3066,7 +3067,7 @@ class PlayState extends MusicBeatState
 					video.onEnd(function()
 					{
 						endSong();
-						video.destroy();
+						//video.destroy();
 					});
 					#else
 					endSong();
