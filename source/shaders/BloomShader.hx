@@ -6,9 +6,6 @@ class BloomShader extends FlxShader // Taken from BBPanzu anime mod hueh
 {
 	@:glFragmentSource('
 	#pragma header
-	vec2 uv = openfl_TextureCoordv.xy;
-	vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
-	vec2 iResolution = openfl_TextureSize;
     
     uniform float funrange;
     uniform float funsteps;
@@ -23,7 +20,9 @@ class BloomShader extends FlxShader // Taken from BBPanzu anime mod hueh
 
 	void mainImage() {
 
-    vec2 uv = fragCoord / iResolution.xy;
+    vec2 uv = openfl_TextureCoordv.xy;
+	vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
+	vec2 iResolution = openfl_TextureSize;
     fragColor = texture(iChannel0, uv);
     
     for (float i = -funrange; i < funrange; i += funsteps) {

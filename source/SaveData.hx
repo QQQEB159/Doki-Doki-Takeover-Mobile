@@ -6,18 +6,21 @@ import sys.FileSystem;
 
 class SaveData
 {
-	#if (haxe >= "4.0.0")
 	public static var songOffsets:Map<String, Float> = new Map();
 	public static var songScores:Map<String, Int> = new Map();
 	public static var songCombos:Map<String, String> = new Map();
 	public static var songAccuracies:Map<String, Float> = new Map();
-	#else
-	public static var songOffsets:Map<String, Float> = new Map<String, Float>();
-	public static var songScores:Map<String, Int> = new Map<String, Int>();
-	public static var songCombos:Map<String, String> = new Map<String, String>();
-	public static var songAccuracies:Map<String, Float> = new Map<String, Float>();
-	#end
 
+	// Mobile and Mobile Controls Releated
+	public static var extraButtons:String = "NONE";
+	public static var hitboxPos:Null<Bool> = true;
+	public static var controlsAlpha:Null<Float> = FlxG.onMobile ? 0.6 : 0;
+	public static var screensaver:Null<Bool> = false;
+	#if android
+	public static var storageType:String = "EXTERNAL_DATA";
+	#end
+	public static var hitboxType:String = "Gradient";
+	
 	public static var language:String = 'en-US';
 	public static var lowEnd:Null<Bool> = false;
 	public static var customCursor:Null<Bool> = true;

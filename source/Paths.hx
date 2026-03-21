@@ -31,7 +31,8 @@ class Paths
 		'assets/music/pixelc.$SOUND_EXT',
 		'assets/music/protagc.$SOUND_EXT',
 		'assets/music/sayoc.$SOUND_EXT',
-		'assets/music/yuric.$SOUND_EXT'
+		'assets/music/yuric.$SOUND_EXT',
+		'assets/mobile/touchpad/bg.png'
 	];
 
 	/// haya I love you for the base cache dump I took to the max
@@ -67,6 +68,11 @@ class Paths
 
 		// run the garbage collector for good measure lmfao
 		System.gc();
+		#if cpp
+		cpp.NativeGc.run(true);
+		#elseif hl
+		hl.Gc.major();
+		#end
 	}
 
 	// define the locally tracked assets
@@ -122,6 +128,9 @@ class Paths
 
 	public static function getPath(file:String, type:AssetType, ?library:Null<String> = null)
 	{
+		if (library == "mobile")
+			return getPreloadPath('mobile/$file');
+		
 		if (library != null)
 			return getLibraryPath(file, library);
 
@@ -370,7 +379,7 @@ class Paths
 			if (OpenFlAssets.exists(getPath('$path/$key.$SOUND_EXT', SOUND, library)))
 				currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(getPath('$path/$key.$SOUND_EXT', SOUND, library)));
 			else
-				currentTrackedSounds.set(gottenPath, Sound.fromFile('./' + gottenPath));
+				currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
 		}
 
 		if (!localTrackedAssets.contains(gottenPath))

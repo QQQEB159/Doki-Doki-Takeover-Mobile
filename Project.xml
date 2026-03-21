@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': Doki Doki Takeover!" file="DokiTakeover" package="com.teamtbd.dokitakeover" main="Main" version="3.1.2" company="TeamTBD" />
+	<app title="Friday Night Funkin': Doki Doki Takeover!" file="DokiTakeover" packageName="com.teamtbd.dokitakeoverplus" package="com.teamtbd.dokitakeoverplus" main="Main" version="3.1.2" company="TeamTBD" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -14,11 +14,17 @@
 
 	<!-- ____________________________ Window Settings ___________________________ -->
 
-	<!--These window settings apply to all targets-->
-	<window width="1280" height="720" fps="" background="#000000" hardware="true" vsync="false" orientation="landscape" fullscreen="false" resizable="true"/>
+    <!--These window settings apply to all targets-->
+    <window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="false" allow-high-dpi="true" />
 
-	<!--Mobile/Switch-specific-->
-	<window if="mobile || switch" orientation="landscape" fullscreen="true" resizable="false" vsync="true"/>
+    <!--Desktop-specific-->
+    <window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
+
+    <!--Mobile-specific-->
+    <window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" />
+
+    <!--Switch-specific-->
+    <window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
 
 	<!-- _____________________________ DDTO Settings ____________________________ -->
 
@@ -28,9 +34,9 @@
 	<!-- Defines whether the Discord client should be enabled. -->
 	<define name="FEATURE_DISCORD" if="desktop PUBLIC_BUILD" unless="hl"/>
 	<!-- Defines whether the file system can be read/written directly. Does not work in browser. -->
-	<define name="FEATURE_FILESYSTEM" if="desktop" />
+	<define name="FEATURE_FILESYSTEM" if="desktop || mobile" />
 	<!-- Defines whether MP4 videos should be enabled. -->
-	<define name="FEATURE_MP4" if="desktop || android" unless="hl" />
+	<define name="FEATURE_MP4" if="desktop || mobile" unless="hl" />
 	<!-- Defines whether Caching is enabled. Will cause issues on systems with limited memory. Doesn't work with Linux. -->
 	<define name="FEATURE_CACHING" if="desktop" unless="linux || 32bit" />
 	<!-- Defines whether OBS or other Windows recording software can be detected. Unverified with Mac. -->
@@ -42,9 +48,9 @@
 	<!-- Defines whether or not language support is available. -->
 	<!-- <define name="FEATURE_LANGUAGE" /> -->
 	<!-- Defines whether there's an unlock all function in the Options menu. -->
-	<define name="FEATURE_UNLOCK" unless="PUBLIC_BUILD" />
+	<define name="FEATURE_UNLOCK" />
 	<!-- Defines whether or not the Izzy Engine crash handler is used. -->
-	<define name="CRASH_HANDLER" if="desktop" unless="debug" />
+	<define name="CRASH_HANDLER" if="desktop || mobile" unless="debug" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -90,7 +96,6 @@
 	</section>
 
 	<assets path='art/readme.txt' rename='fnf_readme.txt' />
-	<assets path='LICENSE' rename='LICENSE.txt' />
 
 	<!-- <assets path="CHANGELOG.md" rename='changelog.txt'/> -->
 
@@ -108,8 +113,7 @@
 
 	<haxelib name="flxanimate" />
 	<haxelib name="firetongue" />
-	<haxelib name="hxCodec" if="FEATURE_MP4"/>
-	<haxelib name="extension-androidtools" if="android" />
+	<haxelib name="hxvlc" if="FEATURE_MP4"/>
 
 	<haxelib name="discord_rpc" if="FEATURE_DISCORD"/>
 
@@ -162,9 +166,19 @@
 	<!--Allow working memory greater than 1GB-->
 	<!-- <haxedef name="HXCPP_GC_BIG_BLOCKS"/> -->
 
-	<!--Used for Izzy Engine's crash handler-->
-	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
-	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
+	<section if="cpp">
+		<haxedef name="HXCPP_CHECK_POINTER" />
+		<haxedef name="HXCPP_STACK_LINE" />
+		<haxedef name="HXCPP_STACK_TRACE" />
+		<haxedef name="HXCPP_CATCH_SEGV" />
+	</section>
+
+        <!-- Allow Access to Engine Files in MOBILE -->
+	<haxedef name="SHARE_MOBILE_FILES" if="mobile" />
+	<haxedef name="lime_use_old_deltatime" />
+		
+	<!-- Do whatever you want I'm tired uninstall and install everytime -->
+	<certificate path="key.keystore" password="psychengine" alias="psychport" alias-password="psychengine" if="android" unless="debug" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 

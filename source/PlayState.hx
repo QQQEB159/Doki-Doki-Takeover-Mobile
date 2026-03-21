@@ -71,7 +71,7 @@ import sys.FileSystem;
 import GameJolt.GameJoltAPI;
 #end
 #if FEATURE_MP4
-import hxcodec.flixel.FlxVideoSprite as VideoSprite;
+import video.FunkinVideoSprite;
 #end
 
 using StringTools;
@@ -369,13 +369,13 @@ class PlayState extends MusicBeatState
 	var dokiData:Array<Float> = [];
 
 	// HOLY LIBITINA
-	var rainBG:VideoSprite;
+	var rainBG:FunkinVideoSprite;
 	var deskBG1:BGSprite;
 	var deskBG2:BGSprite;
 	var deskBG2Overlay:BGSprite;
 	var extractPopup:BGSprite;
 	var libHando:BGSprite;
-	var testVM:VideoSprite;
+	var testVM:FunkinVideoSprite;
 	var testVMLE:BGSprite; // Low End
 	var libiWindow:BGSprite;
 	var libAwaken:BGSprite;
@@ -385,7 +385,7 @@ class PlayState extends MusicBeatState
 	var eyeShadow:BGSprite;
 	var infoBG:BGSprite;
 	var infoBG2:BGSprite;
-	var crackBG:VideoSprite;
+	var crackBG:FunkinVideoSprite;
 	var crackBGLE:BGSprite; // Low End
 	var libFinaleBG:BGSprite;
 	var libGhost:BGSprite;
@@ -1513,8 +1513,9 @@ class PlayState extends MusicBeatState
 							camGame.filters = [new ShaderFilter(fishy)];
 						}
 
-						rainBG = new VideoSprite();
-						rainBG.play(Paths.video('rain'), true);
+						rainBG = new FunkinVideoSprite();
+						rainBG.load(Paths.video('rain'), [FunkinVideoSprite.looping])
+						rainBG.play();
 						rainBG.scrollFactor.set();
 						rainBG.setGraphicSize(Std.int(rainBG.width / defaultCamZoom));
 						rainBG.updateHitbox();
@@ -1555,8 +1556,9 @@ class PlayState extends MusicBeatState
 
 					if (!SaveData.lowEnd)
 					{
-						testVM = new VideoSprite();
-						testVM.play(Paths.video('testvm'), true);
+						testVM = new FunkinVideoSprite();
+						testVM.load(Paths.video('testvm'), [FunkinVideoSprite.looping])
+						testVM.play();
 						testVM.scrollFactor.set();
 						testVM.setGraphicSize(Std.int(testVM.width / defaultCamZoom));
 						testVM.updateHitbox();
@@ -1651,8 +1653,9 @@ class PlayState extends MusicBeatState
 
 					if (!SaveData.lowEnd)
 					{
-						crackBG = new VideoSprite(-10, -10);
-						crackBG.play(Paths.video('crackBG'), true);
+						crackBG = new FunkinVideoSprite(-10, -10);
+						crackBG.load(Paths.video('crackBG'), [FunkinVideoSprite.looping])
+						crackBG.play();
 						crackBG.scrollFactor.set(0.3, 0.3);
 						crackBG.setGraphicSize(Std.int(crackBG.width / defaultCamZoom));
 						crackBG.updateHitbox();
@@ -2717,9 +2720,17 @@ class PlayState extends MusicBeatState
 					var video:VideoHandler = new VideoHandler();
 					video.canSkip = SaveData.beatLibitina;
 					video.skipKeys = [FlxKey.ESCAPE, FlxKey.ENTER];
-					video.play(Paths.video('metaintro'));
-					video.onEndReached.add(function()
+					video.onFormat(() -> {
+                        video.screenCenter();
+                        video.setGraphicSize(1280);
+	                });
+					video.load(Paths.video('metaintro'));
+					FlxG.addChildBelowMouse(video);
+					video.play();
+					video.onEnd(function()
 					{
+						FlxG.removeChild(video);
+						video.destroy();
 						startCountdown();
 					});
 					#else
@@ -3039,9 +3050,17 @@ class PlayState extends MusicBeatState
 					var video:VideoHandler = new VideoHandler();
 					video.canSkip = SaveData.beatPrologue;
 					video.skipKeys = [FlxKey.ESCAPE, FlxKey.ENTER];
-					video.play(Paths.video('monika'));
-					video.onEndReached.add(function()
+					video.onFormat(() -> {
+                        video.screenCenter();
+                        video.setGraphicSize(1280);
+	                });
+					video.load(Paths.video('monika'));
+					FlxG.addChildBelowMouse(video);
+					video.play();
+					video.onEnd(function()
 					{
+						FlxG.removeChild(video);
+						video.destroy();
 						endSong();
 					});
 					#else
@@ -3088,21 +3107,54 @@ class PlayState extends MusicBeatState
 			{
 				#if FEATURE_MP4
 				var video:VideoHandler = new VideoHandler();
-				video.play(Paths.video('monikacodin'));
+				video.onFormat(() -> {
+                    video.screenCenter();
+                    video.setGraphicSize(1280);
+	            });
+		        video.load(Paths.video('monikacodin'));
+				FlxG.addChildBelowMouse(video);
+				video.play();
+				video.onEnd(function()
+				{
+					FlxG.removeChild(video);
+					video.destroy();
+				});
 				#end
 			}
 			case 'senpaitransform':
 			{
 				#if FEATURE_MP4
 				var video:VideoHandler = new VideoHandler();
-				video.play(Paths.video('senpaicodin'));
+				video.onFormat(() -> {
+                    video.screenCenter();
+                    video.setGraphicSize(1280);
+	            });
+		        video.load(Paths.video('senpaicodin'));
+				FlxG.addChildBelowMouse(video);
+				video.play();
+				video.onEnd(function()
+				{
+					FlxG.removeChild(video);
+					video.destroy();
+				});
 				#end
 			}
 			case 'youregoingtophilly':
 			{
 				#if FEATURE_MP4
 				var video:VideoHandler = new VideoHandler();
-				video.play(Paths.video('youregoingtophilly'));
+				video.onFormat(() -> {
+                    video.screenCenter();
+                    video.setGraphicSize(1280);
+	            });
+		        video.load(Paths.video('youregoingtophilly'));
+				FlxG.addChildBelowMouse(video);
+				video.play();
+				video.onEnd(function()
+				{
+					FlxG.removeChild(video);
+					video.destroy();
+				});
 				#end
 			}
 			case 'wiltedbgin':
@@ -3976,14 +4028,7 @@ class PlayState extends MusicBeatState
 				vocals.pause();
 			}
 
-			for (video in members)
-			{
-				var video:Dynamic = video;
-				var video:VideoSprite = video;
-
-				if (video != null && video is VideoSprite)
-					video.bitmap.pause();
-			}
+			FunkinVideoSprite.forEachAlive((video) -> if (video.tiedToGame) video.pause());
 
 			#if FEATURE_DISCORD
 			updateDiscordPresence('Paused');
@@ -4006,14 +4051,7 @@ class PlayState extends MusicBeatState
 				resyncVocals();
 			}
 
-			for (video in members)
-			{
-				var video:Dynamic = video;
-				var video:VideoSprite = video;
-
-				if (video != null && video is VideoSprite)
-					video.bitmap.resume();
-			}
+			FunkinVideoSprite.forEachAlive((video) -> if (video.tiedToGame) video.resume());
 
 			if (startTimer != null && !startTimer.finished)
 				startTimer.active = true;
@@ -4478,9 +4516,9 @@ class PlayState extends MusicBeatState
 		for (video in members)
 		{
 			var video:Dynamic = video;
-			var video:VideoSprite = video;
+			var video:FunkinVideoSprite = video;
 
-			if (video != null && video is VideoSprite)
+			if (video != null && video is FunkinVideoSprite)
 				video.bitmap.rate = Conductor.playbackSpeed;
 		}
 	}

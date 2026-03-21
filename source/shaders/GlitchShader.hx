@@ -1,6 +1,5 @@
 package shaders;
 
-import flixel.system.FlxAssets.FlxShader;
 import lime.utils.Assets;
 import haxe.Json;
 
@@ -17,14 +16,10 @@ class GlitchShader extends FlxShader // https://www.shadertoy.com/view/XtyXzW
 	// So for now, Linux users will have to disable shaders specifically for Libitina.
 
 	@:glFragmentSource('
-	#extension GL_EXT_gpu_shader4 : enable
-	#extension GL_NV_non_square_matrices : enable
+	// #extension GL_EXT_gpu_shader4 : enable
+	// #extension GL_NV_non_square_matrices : enable
 
 	#pragma header
-
-	vec2 uv = openfl_TextureCoordv.xy;
-	vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
-	vec2 iResolution = openfl_TextureSize;
 
 	uniform float time;
 	uniform float prob;
@@ -277,6 +272,8 @@ class GlitchShader extends FlxShader // https://www.shadertoy.com/view/XtyXzW
 	}
 
 	void main() {
+    	vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
+    	vec2 iResolution = openfl_TextureSize;
 		// time = mod(time, 1.);
 		vec2 uv = fragCoord/iResolution.xy;
 		float alpha = texture(bitmap, uv).a;

@@ -226,4 +226,13 @@ class CoolUtil
 	{
 		return (Conductor.stepCrochet / (64 / multiplier)) / Conductor.playbackSpeed;
 	}
+	
+	public static function showPopUp(message:String, title:String):Void
+	{
+		/*#if android
+		android.Tools.showAlertDialog(title, message, {name: "OK", func: null}, null);
+		#else*/
+		FlxG.stage.window.alert(message, title);
+		//#end
+	}
 }
