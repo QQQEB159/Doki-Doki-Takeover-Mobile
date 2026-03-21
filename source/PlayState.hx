@@ -4515,7 +4515,7 @@ class PlayState extends MusicBeatState
 				if (dad.animation.curAnim.name.startsWith('lastNOTE'))
 					dad.animation.curAnim.frameRate = 24 * timescale;
 			case 'love n funkin' | 'love n funkin-alt':
-				poemVideo.anim.frameRate = 24 * timescale;
+				poemVideo.library.frameRate = 24 * timescale;
 		}
 
 		for (video in members)
