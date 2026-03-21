@@ -11,6 +11,9 @@ import openfl.display.BitmapData;
 import openfl.display3D.textures.Texture;
 import openfl.media.Sound;
 
+import animate.FlxAnimate;
+import animate.FlxAnimateFrames.SpritemapInput;
+
 using StringTools;
 
 class Paths
@@ -386,5 +389,12 @@ class Paths
 			localTrackedAssets.push(gottenPath);
 
 		return currentTrackedSounds.get(gottenPath);
+	}
+	
+	public static function loadAnimateAtlas(spr:FlxAnimate, folder:String)
+	{
+		var spriteFrames:Array<SpritemapInput> = null;
+		
+		spr.frames = animate.FlxAnimateFrames.fromAnimate(Paths.getPreloadPath('images/$folder'), spriteFrames, null, null, false, {cacheOnLoad: true});
 	}
 }

@@ -378,9 +378,9 @@ class DokiStoryState extends MusicBeatState
 					video.play();
 					video.onEnd(function()
 					{
-						video.destroy();
 						FlxG.camera.fade(FlxColor.BLACK, 0, false);
 						LoadingState.loadAndSwitchState(new PlayState(), true, true);
+						video.destroy();
 					});
 					#else
 					LoadingState.loadAndSwitchState(new PlayState(), true, true);

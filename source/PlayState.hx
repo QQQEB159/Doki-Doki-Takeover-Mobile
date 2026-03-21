@@ -50,7 +50,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxStringUtil;
 import flixel.util.FlxTimer;
-import flxanimate.FlxAnimate;
+import animate.FlxAnimate;
 import haxe.Json;
 import lime.utils.Assets;
 import openfl.display.BlendMode;
@@ -1488,7 +1488,8 @@ class PlayState extends MusicBeatState
 						clubroom.loadGraphic(Paths.image('musicroom/Music_RoomLNF', 'doki'));
 						// picohandoatlas
 						var poemSprite:String = (SONG.song.toLowerCase().endsWith('-alt') ? 'images/notepad/picohandoatlas' : 'images/notepad/handoatlas');
-						poemVideo = new FlxAnimate(0, 0, Paths.getLibraryPath(poemSprite, 'doki'));
+						poemVideo = new FlxAnimate();
+						Paths.loadAnimateAtlas(poemVideo, poemSprite);
 						poemVideo.showPivot = false;
 						poemVideo.anim.addBySymbol('hando', 'lnf video');
 						poemVideo.anim.play('hando');
@@ -2734,8 +2735,8 @@ class PlayState extends MusicBeatState
 					video.play();
 					video.onEnd(function()
 					{
-						video.destroy();
 						startCountdown();
+						video.destroy();
 					});
 					#else
 					startCountdown();
@@ -3064,8 +3065,8 @@ class PlayState extends MusicBeatState
 					video.play();
 					video.onEnd(function()
 					{
-						video.destroy();
 						endSong();
+						video.destroy();
 					});
 					#else
 					endSong();

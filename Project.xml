@@ -111,7 +111,7 @@
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
 
-	<haxelib name="flxanimate" />
+	<haxelib name="flixel-animate" />
 	<haxelib name="firetongue" />
 	<haxelib name="hxvlc" if="FEATURE_MP4"/>
 

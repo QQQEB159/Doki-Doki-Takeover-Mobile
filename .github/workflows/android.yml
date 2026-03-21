@@ -32,7 +32,7 @@ jobs:
           haxelib install hxvlc 2.2.6
           haxelib install hscript 2.5.0
           haxelib install firetongue 2.1.0
-          haxelib git flxanimate https://github.com/FixedData/flxanimate
+          haxelib git flixel-animate https://github.com/QQQEB159/flixel-animate
           haxelib list
       
       - name: Setup Lime

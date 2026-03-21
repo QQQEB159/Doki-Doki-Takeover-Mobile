@@ -52,13 +52,12 @@ class FPSCounter extends TextField
 			return;
 		}
 
-		var now:Float = haxe.Timer.stamp();
+		final now:Float = haxe.Timer.stamp() * 1000;
 		times.push(now);
-
 		while (times[0] < now - 1000)
 			times.shift();
 
-		currentFPS = currentFPS < SaveData.framerate ? times.length : SaveData.framerate;
+		currentFPS = times.length < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;
 		updateText();
 		deltaTimeout += deltaTime;
 	}
