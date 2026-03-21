@@ -1514,7 +1514,7 @@ class PlayState extends MusicBeatState
 						}
 
 						rainBG = new FunkinVideoSprite();
-						rainBG.load(Paths.video('rain'), [FunkinVideoSprite.looping])
+						rainBG.load(Paths.video('rain'), [FunkinVideoSprite.looping]);
 						rainBG.play();
 						rainBG.scrollFactor.set();
 						rainBG.setGraphicSize(Std.int(rainBG.width / defaultCamZoom));
@@ -1557,7 +1557,7 @@ class PlayState extends MusicBeatState
 					if (!SaveData.lowEnd)
 					{
 						testVM = new FunkinVideoSprite();
-						testVM.load(Paths.video('testvm'), [FunkinVideoSprite.looping])
+						testVM.load(Paths.video('testvm'), [FunkinVideoSprite.looping]);
 						testVM.play();
 						testVM.scrollFactor.set();
 						testVM.setGraphicSize(Std.int(testVM.width / defaultCamZoom));
@@ -1654,7 +1654,7 @@ class PlayState extends MusicBeatState
 					if (!SaveData.lowEnd)
 					{
 						crackBG = new FunkinVideoSprite(-10, -10);
-						crackBG.load(Paths.video('crackBG'), [FunkinVideoSprite.looping])
+						crackBG.load(Paths.video('crackBG'), [FunkinVideoSprite.looping]);
 						crackBG.play();
 						crackBG.scrollFactor.set(0.3, 0.3);
 						crackBG.setGraphicSize(Std.int(crackBG.width / defaultCamZoom));
