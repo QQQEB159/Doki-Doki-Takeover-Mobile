@@ -1490,7 +1490,7 @@ class PlayState extends MusicBeatState
 						var poemSprite:String = (SONG.song.toLowerCase().endsWith('-alt') ? 'notepad/picohandoatlas' : 'notepad/handoatlas');
 						poemVideo = new FlxAnimate();
 						Paths.loadAnimateAtlas(poemVideo, poemSprite);
-						poemVideo.showPivot = false;
+						//poemVideo.showPivot = false;
 						poemVideo.anim.addBySymbol('hando', 'lnf video');
 						poemVideo.anim.play('hando');
 						poemVideo.scrollFactor.set();
@@ -4515,7 +4515,7 @@ class PlayState extends MusicBeatState
 				if (dad.animation.curAnim.name.startsWith('lastNOTE'))
 					dad.animation.curAnim.frameRate = 24 * timescale;
 			case 'love n funkin' | 'love n funkin-alt':
-				poemVideo.anim.framerate = 24 * timescale;
+				poemVideo.anim.frameRate = 24 * timescale;
 		}
 
 		for (video in members)
