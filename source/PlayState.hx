@@ -1487,7 +1487,7 @@ class PlayState extends MusicBeatState
 					{
 						clubroom.loadGraphic(Paths.image('musicroom/Music_RoomLNF', 'doki'));
 						// picohandoatlas
-						var poemSprite:String = (SONG.song.toLowerCase().endsWith('-alt') ? 'images/notepad/picohandoatlas' : 'images/notepad/handoatlas');
+						var poemSprite:String = (SONG.song.toLowerCase().endsWith('-alt') ? 'notepad/picohandoatlas' : 'notepad/handoatlas');
 						poemVideo = new FlxAnimate();
 						Paths.loadAnimateAtlas(poemVideo, poemSprite);
 						poemVideo.showPivot = false;
