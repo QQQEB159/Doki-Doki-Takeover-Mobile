@@ -80,9 +80,7 @@ class AnimationDebugState extends MusicBeatState
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
 		FlxG.cameras.reset(camGame);
-		FlxG.cameras.add(camHUD);
-
-		FlxCamera.defaultCameras = [camGame];
+		FlxG.cameras.add(camHUD, false);
 
 		if (costumeoverride == '' && inGame == false)
 			Character.loadaltcostume = false;

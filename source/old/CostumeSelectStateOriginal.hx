@@ -2,7 +2,7 @@ package old;
 
 import Controls.KeyboardScheme;
 import flixel.FlxG;
-import flixel.FlxObject;
+import flixel.util.FlxDirectionFlags;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxBackdrop;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -607,7 +607,7 @@ class CostumeSelectStateOriginal extends MusicBeatState
 
 		if (dad.facing != dad.initFacing)
 		{
-			dad.facing = FlxObject.RIGHT;
+			dad.facing = FlxDirectionFlags.RIGHT;
 		}
 
 	}

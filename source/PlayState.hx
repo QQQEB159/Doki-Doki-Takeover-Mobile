@@ -597,10 +597,10 @@ class PlayState extends MusicBeatState
 		camVideo.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
-		FlxG.cameras.add(camGame2);
-		FlxG.cameras.add(camHUD);
-		FlxG.cameras.add(camOverlay);
-		FlxG.cameras.add(camVideo);
+		FlxG.cameras.add(camGame2, false);
+		FlxG.cameras.add(camHUD, false);
+		FlxG.cameras.add(camOverlay, false);
+		FlxG.cameras.add(camVideo, false);
 
 		camHUD.zoom = defaultHudZoom;
 
@@ -608,7 +608,6 @@ class PlayState extends MusicBeatState
 		grpNoteSplashes.add(tempNoteSplash);
 		tempNoteSplash.alpha = 0.001;
 
-		FlxCamera.defaultCameras = [camGame];
 		CustomFadeTransition.nextCamera = camOverlay;
 
 		persistentUpdate = true;
