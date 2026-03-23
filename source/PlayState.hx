@@ -2732,13 +2732,13 @@ class PlayState extends MusicBeatState
                         video.setGraphicSize(1280);
 	                });
 					video.load(Paths.video('metaintro'));
-					add(video);
-					video.play();
 					video.onEnd(function()
 					{
 						startCountdown();
-						//video.destroy();
+						video.destroy();
 					});
+					add(video);
+					video.play();
 					#else
 					startCountdown();
 					#end
@@ -3062,13 +3062,13 @@ class PlayState extends MusicBeatState
                         video.setGraphicSize(1280);
 	                });
 					video.load(Paths.video('monika'));
-					add(video);
-					video.play();
 					video.onEnd(function()
 					{
 						endSong();
-						//video.destroy();
+						video.destroy();
 					});
+					add(video);
+					video.play();
 					#else
 					endSong();
 					#end
@@ -3121,10 +3121,6 @@ class PlayState extends MusicBeatState
 		        video.load(Paths.video('monikacodin'));
 				add(video);
 				video.play();
-				video.onEnd(function()
-				{
-					video.destroy();
-				});
 				#end
 			}
 			case 'senpaitransform':
@@ -3139,10 +3135,6 @@ class PlayState extends MusicBeatState
 		        video.load(Paths.video('senpaicodin'));
 				add(video);
 				video.play();
-				video.onEnd(function()
-				{
-					video.destroy();
-				});
 				#end
 			}
 			case 'youregoingtophilly':
@@ -3157,10 +3149,6 @@ class PlayState extends MusicBeatState
 		        video.load(Paths.video('youregoingtophilly'));
 				add(video);
 				video.play();
-				video.onEnd(function()
-				{
-					video.destroy();
-				});
 				#end
 			}
 			case 'wiltedbgin':

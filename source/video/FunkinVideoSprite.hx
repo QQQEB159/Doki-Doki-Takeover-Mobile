@@ -94,10 +94,10 @@ class FunkinVideoSprite extends FlxVideoSprite
 	 * Recommended over `this.play`
 	 * @param delay The delay before the video starts. default is next update call
 	 */
-	//public function delayAndStart(delay:Float = 0)
-	//{
-		//FlxTimer.wait(delay, play);
-	//}
+	public function delayAndStart(delay:Float = 0)
+	{
+		FlxTimer.wait(delay, play);
+	}
 	
 	/**
 	 * Adds a event to be dispatched when the video reaches its end

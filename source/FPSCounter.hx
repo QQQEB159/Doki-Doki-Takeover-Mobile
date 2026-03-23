@@ -22,6 +22,8 @@ class FPSCounter extends TextField
 	public var memoryMegas(get, never):Float;
 
 	@:noCompletion private var times:Array<Float>;
+	
+	@:noCompletion var deltaTimeout:Float = 0.0;
 
 	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
 	{
@@ -41,25 +43,25 @@ class FPSCounter extends TextField
 		times = [];
 	}
 
-	var deltaTimeout:Float = 0.0;
-
 	// Event Handlers
 	private override function __enterFrame(deltaTime:Float):Void
 	{
-		if (deltaTimeout > 1000)
-		{
-			deltaTimeout = 0.0;
-			return;
-		}
-
 		final now:Float = haxe.Timer.stamp() * 1000;
 		times.push(now);
 		while (times[0] < now - 1000)
 			times.shift();
 
+		// prevents the overlay from updating every frame, why would you need to anyways @crowplexus
+		if (deltaTimeout < 100)
+		{
+			deltaTimeout += deltaTime;
+			return;
+		}
+		
 		currentFPS = times.length < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;
 		updateText();
-		deltaTimeout += deltaTime;
+	    
+	    deltaTimeout = 0.0;
 	}
 
 	public dynamic function updateText():Void
@@ -69,7 +71,7 @@ class FPSCounter extends TextField
 
 		textColor = 0xFF1DADBB;
 
-		if (currentFPS < 60)
+		if (currentFPS < FlxG.drawFramerate * 0.5)
 			textColor = 0xFFBB2B1D;
 	}
 

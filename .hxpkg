@@ -1,0 +1,54 @@
+[
+    {
+        "profile": "default",
+        "pkgs": [
+            {
+                "name": "flixel",
+                "version": "6.0.0"
+            },
+            {
+                "name": "flixel-addons",
+                "version": "3.3.2"
+            },
+            {
+                "name": "flixel-ui",
+                "version": "2.6.4"
+            },
+            {
+                "name": "flixel-animate",
+                "link": "https://github.com/QQQEB159/flixel-animate",
+                "branch": "main"
+            },
+            {
+                "name": "hscript",
+                "version": "2.6.0"
+            },
+            {
+                "name": "hxcpp-debug-server",
+                "version": "1.2.4"
+            },
+            {
+                "name": "hxcpp",
+                "link": "https://github.com/ShadowEngineTeam/hxcpp",
+                "branch": "main"
+            },
+            {
+                "name": "hxvlc",
+                "version": "2.2.6"
+            },
+            {
+                "name": "lime",
+                "link": "https://github.com/QQQEB159/lime-8.2.2",
+                "branch": "main"
+            },
+            {
+                "name": "openfl",
+                "version": "9.3.3"
+            },
+            {
+                "name": "firetongue",
+                "version": "2.1.0"
+            }
+        ]
+    }
+]
