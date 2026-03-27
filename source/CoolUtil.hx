@@ -5,6 +5,7 @@ import openfl.display.BitmapData;
 import openfl.utils.Assets as OpenFlAssets;
 import flixel.graphics.FlxGraphic;
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.util.FlxColor;
 import openfl.utils.Assets;
 #if FEATURE_FILESYSTEM
 import sys.io.Process;
@@ -126,6 +127,17 @@ class CoolUtil
 		return daList;
 	}
 
+	public static function colorFromString(color:String):FlxColor
+	{
+		var hideChars = ~/[\t\n\r]/;
+		var color:String = hideChars.split(color).join('').trim();
+		if(color.startsWith('0x')) color = color.substring(color.length - 6);
+
+		var colorNum:Null<FlxColor> = FlxColor.fromString(color);
+		if(colorNum == null) colorNum = FlxColor.fromString('#$color');
+		return colorNum != null ? colorNum : FlxColor.WHITE;
+	}
+	
 	public static function coolStringFile(path:String):Array<String>
 	{
 		var daList:Array<String> = path.trim().split('\n');

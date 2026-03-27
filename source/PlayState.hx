@@ -1487,7 +1487,7 @@ class PlayState extends MusicBeatState
 						clubroom.loadGraphic(Paths.image('musicroom/Music_RoomLNF', 'doki'));
 						// picohandoatlas
 						var poemSprite:String = (SONG.song.toLowerCase().endsWith('-alt') ? 'notepad/picohandoatlas' : 'notepad/handoatlas');
-						var poemSpriteAnim:String = (SONG.song.toLowerCase().endsWith('-alt') ? 'lnf video Pico' : 'lnf video');
+						var poemSpriteAnim:String = (SONG.song.toLowerCase().endsWith('-alt') ? 'lnf video' : 'lnf video');
 						poemVideo = new FlxAnimate();
 						Paths.loadAnimateAtlas(poemVideo, poemSprite);
 						//poemVideo.showPivot = false;
@@ -2731,11 +2731,7 @@ class PlayState extends MusicBeatState
                         video.setGraphicSize(1280);
 	                });
 					video.load(Paths.video('metaintro'));
-					video.onEnd(function()
-					{
-						startCountdown();
-						video.destroy();
-					});
+					video.onEnd(startCountdown);
 					add(video);
 					video.play();
 					#else
@@ -3061,11 +3057,7 @@ class PlayState extends MusicBeatState
                         video.setGraphicSize(1280);
 	                });
 					video.load(Paths.video('monika'));
-					video.onEnd(function()
-					{
-						endSong();
-						video.destroy();
-					});
+					video.onEnd(endSong);
 					add(video);
 					video.play();
 					#else

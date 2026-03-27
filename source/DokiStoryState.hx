@@ -374,12 +374,7 @@ class DokiStoryState extends MusicBeatState
                         video.setGraphicSize(1280);
 	                });
 					video.load(Paths.video('sayointro'));
-					video.onEnd(function()
-					{
-						FlxG.camera.fade(FlxColor.BLACK, 0, false);
-						LoadingState.loadAndSwitchState(new PlayState(), true, true);
-						video.destroy();
-					});
+					video.onEnd(endIntro);
 					add(video);
 					video.play();
 					#else
@@ -391,6 +386,12 @@ class DokiStoryState extends MusicBeatState
 		});
 	}
 
+	function endIntro()
+	{
+	    FlxG.camera.fade(FlxColor.BLACK, 0, false);
+		LoadingState.loadAndSwitchState(new PlayState(), true, true);
+	}
+	
 	// Totaly not gonna break the code
 	// Trust me
 	// :) ~Codexes
