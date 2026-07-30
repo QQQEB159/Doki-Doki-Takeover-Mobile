@@ -4,11 +4,13 @@
         "pkgs": [
             {
                 "name": "hxcpp",
-                "version": "4.3.2"
+                "link": "https://github.com/ShadowEngineTeam/hxcpp",
+                "branch": "main"
             },
             {
                 "name": "lime",
-                "version": "8.1.1"
+                "link": "https://github.com/QQQEB159/lime-8.1.2",
+                "branch": "main"
             },
             {
                 "name": "openfl",
@@ -56,11 +58,7 @@
 				"name": "flxanimate",
 				"link": "https://github.com/Dot-Stuff/flxanimate",
                 "branch": "master"
-			},
-			{
-                "name": "extension-androidtools",
-                "version": "1.9.0"
-            }
+			}
         ]
     }
 ]

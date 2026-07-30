@@ -109,7 +109,6 @@
 	<haxelib name="flxanimate" />
 	<haxelib name="firetongue" />
 	<haxelib name="hxCodec" if="FEATURE_MP4"/>
-	<haxelib name="extension-androidtools" if="android" />
 
 	<haxelib name="discord_rpc" if="FEATURE_DISCORD"/>
 
@@ -179,6 +178,9 @@
 	<!-- Category Type for Apple Systems -->
 	<config:ios category_type="public.app-category.music-games" />
 	<config:mac category_type="public.app-category.music-games" />
+	
+	<!-- Allow Access to Engine Files in MOBILE -->
+	<haxedef name="SHARE_MOBILE_FILES" if="mobile" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
