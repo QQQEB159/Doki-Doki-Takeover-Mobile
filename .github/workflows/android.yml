@@ -16,12 +16,6 @@ jobs:
         uses: actions/checkout@main
         with:
           submodules: true
-
-      - name: Setup Gradle properties
-        run: |
-          echo "org.gradle.jvmargs=-Xmx6g -XX:MaxMetaspaceSize=1g" >> gradle.properties
-          echo "org.gradle.parallel=false" >> gradle.properties
-          echo "org.gradle.daemon=false" >> gradle.properties
       
       - name: Setup Android NDK
         uses: nttld/setup-ndk@main
@@ -52,6 +46,12 @@ jobs:
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
           
+      - name: Setup Gradle Properties (Fix OOM)
+        run: |
+          echo "org.gradle.jvmargs=-Xmx4096m" >> gradle.properties
+          echo "org.gradle.parallel=true" >> gradle.properties
+          echo "android.enableDexingArtifactTransform.desugaring=false" >> gradle.properties
+      
       - name: Compile
         run: haxelib run lime build android
       
