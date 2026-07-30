@@ -17,6 +17,9 @@ jobs:
         with:
           submodules: true
 
+      - name: Set Gradle memory
+  run: echo "GRADLE_OPTS=-Xmx4g -XX:MaxMetaspaceSize=512m" >> $GITHUB_ENV
+      
       - name: Setup Android NDK
         uses: nttld/setup-ndk@main
         id: setup-ndk
@@ -45,7 +48,6 @@ jobs:
           haxelib run lime config ANDROID_NDK_ROOT ${{ steps.setup-ndk.outputs.ndk-path }}
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
-          export GRADLE_OPTS="-Xmx4g -XX:MaxMetaspaceSize=512m"
           
       - name: Compile
         run: haxelib run lime build android
