@@ -1,5 +1,9 @@
 package;
 
+#if android
+import android.content.Context;
+import android.os.Build;
+#end
 import flixel.graphics.FlxGraphic;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -49,6 +53,12 @@ class Main extends Sprite
 
 	public function new()
 	{
+		#if android
+		Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
+		#elseif ios
+		Sys.setCwd(System.documentsDirectory);
+		#end
+		
 		super();
 
 		if (stage != null)
@@ -98,7 +108,7 @@ class Main extends Sprite
 		addChild(game);
 
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
-		addChild(fpsVar);
+		FlxG.game.addChild(fpsVar);
 
 		if (fpsVar != null)
 			fpsVar.visible = SaveData.showFPS;
@@ -141,7 +151,7 @@ class Main extends Sprite
 		dateNow = dateNow.replace(" ", "_");
 		dateNow = dateNow.replace(":", "'");
 
-		path = './crash/DDTO_$dateNow.txt';
+		path = 'crash/DDTO_$dateNow.txt';
 
 		for (stackItem in callStack)
 		{
@@ -158,8 +168,8 @@ class Main extends Sprite
 			+ e.error
 			+ "\nPlease report this error to the GitHub page: https://github.com/Jorge-SunSpirit/Doki-Doki-Takeover\n\n> Crash Handler written by: sqirra-rng";
 
-		if (!FileSystem.exists("./crash/"))
-			FileSystem.createDirectory("./crash/");
+		if (!FileSystem.exists("crash/"))
+			FileSystem.createDirectory("crash/");
 
 		File.saveContent(path, errMsg + "\n");
 

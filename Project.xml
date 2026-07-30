@@ -28,9 +28,9 @@
 	<!-- Defines whether the Discord client should be enabled. -->
 	<define name="FEATURE_DISCORD" if="desktop PUBLIC_BUILD" unless="hl"/>
 	<!-- Defines whether the file system can be read/written directly. Does not work in browser. -->
-	<define name="FEATURE_FILESYSTEM" if="desktop" />
+	<define name="FEATURE_FILESYSTEM" if="desktop || mobile" />
 	<!-- Defines whether MP4 videos should be enabled. -->
-	<define name="FEATURE_MP4" if="desktop || android" unless="hl" />
+	<define name="FEATURE_MP4" if="desktop || mobile" unless="hl" />
 	<!-- Defines whether Caching is enabled. Will cause issues on systems with limited memory. Doesn't work with Linux. -->
 	<define name="FEATURE_CACHING" if="desktop" unless="linux || 32bit" />
 	<!-- Defines whether OBS or other Windows recording software can be detected. Unverified with Mac. -->
@@ -44,7 +44,7 @@
 	<!-- Defines whether there's an unlock all function in the Options menu. -->
 	<define name="FEATURE_UNLOCK" unless="PUBLIC_BUILD" />
 	<!-- Defines whether or not the Izzy Engine crash handler is used. -->
-	<define name="CRASH_HANDLER" if="desktop" unless="debug" />
+	<define name="CRASH_HANDLER" if="desktop || mobile" unless="debug" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -165,6 +165,20 @@
 	<!--Used for Izzy Engine's crash handler-->
 	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
 	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
+	
+	<!--Disable deprecated warnings-->
+	<haxedef name='no-deprecation-warnings' />
+
+	<!-- Haxe 4.3.0+: Enable pretty syntax errors and stuff. -->
+	<!-- pretty (haxeflixel default), indent, classic (haxe compiler default) -->
+	<haxedef name="message.reporting" value="pretty" />
+	
+	<!-- Do whatever you want I'm tired uninstall and install everytime -->
+	<certificate path="key.keystore" password="psychengine" alias="psychport" alias-password="psychengine" if="android" unless="debug" />
+
+	<!-- Category Type for Apple Systems -->
+	<config:ios category_type="public.app-category.music-games" />
+	<config:mac category_type="public.app-category.music-games" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 

@@ -58,7 +58,7 @@ class FPSCounter extends TextField
 		while (times[0] < now - 1000)
 			times.shift();
 
-		currentFPS = currentFPS < SaveData.framerate ? times.length : SaveData.framerate;
+		currentFPS = currentFPS < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;
 		updateText();
 		deltaTimeout += deltaTime;
 	}
@@ -75,5 +75,5 @@ class FPSCounter extends TextField
 	}
 
 	inline function get_memoryMegas():Float
-		return cast(System.totalMemory, UInt);
+		return cpp.vm.Gc.memInfo64(cpp.vm.Gc.MEM_INFO_USAGE);
 }

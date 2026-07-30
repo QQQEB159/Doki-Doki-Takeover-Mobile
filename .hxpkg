@@ -1,0 +1,66 @@
+[
+    {
+        "profile": "default",
+        "pkgs": [
+            {
+                "name": "hxcpp",
+                "version": "4.3.2"
+            },
+            {
+                "name": "lime",
+                "version": "8.1.1"
+            },
+            {
+                "name": "openfl",
+                "version": "9.3.2"
+            },
+            {
+                "name": "flixel",
+                "version": "5.5.0"
+            },
+            {
+                "name": "flixel-addons",
+                "version": "3.2.1"
+            },
+            {
+                "name": "flixel-ui",
+                "version": "2.5.0"
+            },
+            {
+                "name": "flixel-tools",
+                "version": "1.5.1"
+            },
+            {
+                "name": "firetongue",
+                "version": "2.1.0"
+            },
+            {
+                "name": "hxcpp-debug-server",
+                "version": "1.2.4"
+            },
+            {
+                "name": "hscript",
+                "version": "2.5.0"
+            },
+            {
+				"name": "hxCodec",
+				"link": "https://github.com/polybiusproxy/hxCodec",
+                "branch": "main"
+			},
+			{
+				"name": "discord_rpc",
+				"link": "https://github.com/Aidan63/linc_discord-rpc",
+                "branch": "master"
+			},
+			{
+				"name": "flxanimate",
+				"link": "https://github.com/Dot-Stuff/flxanimate",
+                "branch": "master"
+			},
+			{
+                "name": "extension-androidtools",
+                "version": "1.9.0"
+            }
+        ]
+    }
+]
