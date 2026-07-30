@@ -10,7 +10,7 @@ on:
 jobs:
   buildAndroid:
     name: buildAndroid
-    runs-on: ubunutu-latest
+    runs-on: ubunutu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@main
