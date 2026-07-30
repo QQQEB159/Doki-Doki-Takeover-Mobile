@@ -17,8 +17,11 @@ jobs:
         with:
           submodules: true
 
-      - name: Set Gradle memory
-        run: echo "GRADLE_OPTS=-Xmx4g -XX:MaxMetaspaceSize=512m" >> $GITHUB_ENV
+      - name: Setup Gradle properties
+        run: |
+          echo "org.gradle.jvmargs=-Xmx6g -XX:MaxMetaspaceSize=1g" >> gradle.properties
+          echo "org.gradle.parallel=false" >> gradle.properties
+          echo "org.gradle.daemon=false" >> gradle.properties
       
       - name: Setup Android NDK
         uses: nttld/setup-ndk@main
