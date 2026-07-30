@@ -45,6 +45,7 @@ jobs:
           haxelib run lime config ANDROID_NDK_ROOT ${{ steps.setup-ndk.outputs.ndk-path }}
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
+          export GRADLE_OPTS="-Xmx4g -XX:MaxMetaspaceSize=512m"
           
       - name: Compile
         run: haxelib run lime build android
