@@ -5,7 +5,7 @@
             {
                 "name": "hxcpp",
                 "link": "https://github.com/ShadowEngineTeam/hxcpp",
-                "branch": "main"
+                "branch": "c4a5d559af9c962fd7ef29351fa6e479e3479f86"
             },
             {
                 "name": "lime",
@@ -45,9 +45,8 @@
                 "version": "2.5.0"
             },
             {
-				"name": "hxCodec",
-				"link": "https://github.com/polybiusproxy/hxCodec",
-                "branch": "main"
+				"name": "hxvlc",
+				"version": "2.3.0"
 			},
 			{
 				"name": "discord_rpc",

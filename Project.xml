@@ -42,7 +42,7 @@
 	<!-- Defines whether or not language support is available. -->
 	<!-- <define name="FEATURE_LANGUAGE" /> -->
 	<!-- Defines whether there's an unlock all function in the Options menu. -->
-	<define name="FEATURE_UNLOCK" unless="PUBLIC_BUILD" />
+	<define name="FEATURE_UNLOCK" />
 	<!-- Defines whether or not the Izzy Engine crash handler is used. -->
 	<define name="CRASH_HANDLER" if="desktop || mobile" unless="debug" />
 
@@ -108,7 +108,7 @@
 
 	<haxelib name="flxanimate" />
 	<haxelib name="firetongue" />
-	<haxelib name="hxCodec" if="FEATURE_MP4"/>
+	<haxelib name="hxvlc" if="FEATURE_MP4"/>
 
 	<haxelib name="discord_rpc" if="FEATURE_DISCORD"/>
 

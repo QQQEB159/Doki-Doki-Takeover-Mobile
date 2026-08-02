@@ -67,6 +67,9 @@ class Paths
 
 		// run the garbage collector for good measure lmfao
 		System.gc();
+		#if cpp
+		cpp.NativeGc.run(true);
+		#end
 	}
 
 	// define the locally tracked assets
@@ -370,7 +373,7 @@ class Paths
 			if (OpenFlAssets.exists(getPath('$path/$key.$SOUND_EXT', SOUND, library)))
 				currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(getPath('$path/$key.$SOUND_EXT', SOUND, library)));
 			else
-				currentTrackedSounds.set(gottenPath, Sound.fromFile('./' + gottenPath));
+				currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
 		}
 
 		if (!localTrackedAssets.contains(gottenPath))

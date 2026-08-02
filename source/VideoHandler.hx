@@ -1,7 +1,7 @@
 #if FEATURE_MP4
 import flixel.FlxG;
 import flixel.input.keyboard.FlxKey;
-import hxcodec.flixel.FlxVideo;
+import hxvlc.flixel.FlxVideo;
 import openfl.events.KeyboardEvent;
 
 class VideoHandler extends FlxVideo
@@ -19,19 +19,21 @@ class VideoHandler extends FlxVideo
 		});
 	}
 
-	override public function play(location:String, shouldLoop:Bool = false):Int
+	override public function play():Int
 	{
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.mouse.visible = false;
 		FlxG.sound.music.stop();
+		FlxG.addChildBelowMouse(this);
 
-		return super.play(location, shouldLoop);
+		return super.play();
 	}
 
 	override public function dispose():Void
 	{
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.mouse.visible = true;
+		FlxG.removeChild(this);
 		super.dispose();
 	}
 
