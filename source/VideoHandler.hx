@@ -19,7 +19,7 @@ class VideoHandler extends FlxVideo
 		});
 	}
 
-	override public function play():Int
+	override public function play():Bool
 	{
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.mouse.visible = false;
@@ -32,7 +32,7 @@ class VideoHandler extends FlxVideo
 	override public function dispose():Void
 	{
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
-		FlxG.mouse.visible = true;
+		//FlxG.mouse.visible = true;
 		FlxG.removeChild(this);
 		super.dispose();
 	}
